@@ -12,11 +12,13 @@ class PalindromeNo {
 		while (num != 0) {
 			int digit = num % 10;
 			reversed = reversed * 10 + digit;
-			num /= 10;
+			num /= 10 ;
 		}
 		return original == reversed;
 	}
 
+
+	
 	public static void main(String[] args) {
 		int num = 121; 
 		if (isPalindrome(num)) {
