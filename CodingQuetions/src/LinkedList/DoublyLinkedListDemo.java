@@ -30,6 +30,44 @@ class DoublyLinkedList<T> {
 		}
 	}
 
+	// Insert at a particular position
+	public void insertAtPosition(T data, int position) {
+		Node<T> newNode = new Node<>(data);
+
+		// Case 1: Insert at the head
+		if (position == 1) {
+			if (head != null) {
+				newNode.next = head;
+				head.prev = newNode;
+			}
+			head = newNode;
+			return;
+		}
+
+		// Case 2: Traverse to the desired position
+		Node<T> current = head;
+		int currentPosition = 1;
+
+		while (current != null && currentPosition < position - 1) {
+			current = current.next;
+			currentPosition++;
+		}
+
+		// Case 3: Insert in between or at the end
+		if (current != null) {
+			newNode.next = current.next;
+			newNode.prev = current;
+
+			if (current.next != null) {
+				current.next.prev = newNode;
+			}
+			current.next = newNode;
+		} else {
+			// If position is out of bounds
+			System.out.println("Position out of bounds");
+		}
+	}
+
 	// Delete an element
 	public void delete(T data) {
 		if (head == null)
@@ -96,6 +134,7 @@ public class DoublyLinkedListDemo {
 		list.insert(10);
 		list.insert(20);
 		list.insert(30);
+		list.insertAtPosition(40, 2);
 		list.displayForward(); // 10 <-> 20 <-> 30 <-> null
 		list.delete(20);
 		list.displayForward(); // 10 <-> 30 <-> null

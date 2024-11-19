@@ -37,13 +37,14 @@ class SinglyLinkedList<T> {
 			return;
 		}
 
+		// Traverse the list to find the node before the one to be deleted
 		Node<T> current = head;
-		while (current.next != null && !current.next.data.equals(data)) {
+		while (current.next != null) {
+			if (current.next.data.equals(data)) {
+				current.next = current.next.next; // Bypass the node to delete it
+				return;
+			}
 			current = current.next;
-		}
-
-		if (current.next != null) {
-			current.next = current.next.next;
 		}
 	}
 
