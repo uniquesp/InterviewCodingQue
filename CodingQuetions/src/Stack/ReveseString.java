@@ -18,7 +18,7 @@ public class ReveseString {
 	}
 
 	public static void main(String[] args) {
-		StringBuilder str = new StringBuilder("GeeksQuiz");
+		StringBuilder str = new StringBuilder("GeeksQuiz mine");
 		reverseStr(str);
 		System.out.println("Reversed string is: " + str);
 	}

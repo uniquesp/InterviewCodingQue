@@ -43,7 +43,6 @@ class DoublyLinkedList<T> {
 			head = newNode;
 			return;
 		}
-
 		// Case 2: Traverse to the desired position
 		Node<T> current = head;
 		int currentPosition = 1;

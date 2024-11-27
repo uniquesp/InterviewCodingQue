@@ -27,6 +27,34 @@ class SinglyLinkedList<T> {
 		}
 	}
 
+	public void insertatPos(T data, int pos) {
+		Node<T> newNode = new Node<>(data);
+		if (pos < 0) {
+			System.out.println("Invalid position!");
+			return;
+		}
+
+		if (pos == 0) { // Insert at the head
+			newNode.next = head;
+			head = newNode;
+			return;
+		}
+
+		Node<T> current = head;
+		int i = 0;
+		while (current != null && i < pos - 1) { // Traverse to the node before the target position
+			current = current.next;
+			i++;
+		}
+		if (current == null) { // Position out of bounds
+			System.out.println("Position out of bounds!");
+			return;
+		}
+		newNode.next = current.next;
+		current.next = newNode;
+
+	}
+
 	// Delete an element
 	public void delete(T data) {
 		if (head == null)
@@ -46,6 +74,30 @@ class SinglyLinkedList<T> {
 			}
 			current = current.next;
 		}
+	}
+
+	public void deleteFromPos(int pos) {
+		if (pos < 0 || head == null) { // Invalid position or empty list
+			System.out.println("Invalid position or list is empty!");
+			return;
+		}
+		if (pos == 0) { // Deleting the head
+			head = head.next;
+			return;
+		}
+		Node<T> current = head;
+		int i = 0;
+		// Traverse to the node before the target position
+		while (current != null && i < pos - 1) {
+			current = current.next;
+			i++;
+		}
+		if (current == null || current.next == null) { // Position out of bounds
+			System.out.println("Position out of bounds!");
+			return;
+		}
+		// Delete the node by skipping it
+		current.next = current.next.next;
 	}
 
 	// Traverse the list
@@ -69,8 +121,21 @@ public class SinglyLinkedListDemo {
 		list.insert(10);
 		list.insert(20);
 		list.insert(30);
-		list.display(); // 10 -> 20 -> 30 -> null
-		list.delete(20);
-		list.display(); // 10 -> 30 -> null
+		list.insert(40);
+		list.insertatPos(80, 2);
+		System.out.println("Original List:");
+		list.display(); // Output: 10 -> 20 -> 30 -> 40 -> null
+
+		list.deleteFromPos(2); // Delete element at position 2
+		System.out.println("After deleting position 2:");
+		list.display(); // Output: 10 -> 20 -> 40 -> null
+
+		list.deleteFromPos(0); // Delete the head
+		System.out.println("After deleting position 0:");
+		list.display(); // Output: 20 -> 40 -> null
+
+		list.deleteFromPos(5); // Position out of bounds
+		System.out.println("After attempting invalid position:");
+		list.display();
 	}
 }

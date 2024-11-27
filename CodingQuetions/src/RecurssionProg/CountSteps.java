@@ -1,25 +1,26 @@
 package RecurssionProg;
 
+import java.util.Scanner;
+
 public class CountSteps {
 
-	public static int CountSteps(int n) {
-		int count = 0;
-		
-		if(n==1) {
+	public static int CountStepsToReach(int n) {
+		if (n == 0) {
 			return 1;
 		}
-		if(n==2) {
-			return 2;
+
+		if (n < 0) {
+			return 0;
 		}
-		
-		
-		
-		return count;
+
+		return CountStepsToReach(n - 1) + CountStepsToReach(n - 2) + CountStepsToReach(n - 3);
+
 	}
-	
-	
+
 	public static void main(String[] args) {
-		
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		System.out.println(CountStepsToReach(n));
 	}
 
 }
