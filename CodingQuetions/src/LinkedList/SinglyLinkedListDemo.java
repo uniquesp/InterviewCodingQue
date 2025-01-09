@@ -116,7 +116,7 @@ class SinglyLinkedList<T> {
 }
 
 public class SinglyLinkedListDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) { 		
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 		list.insert(10);
 		list.insert(20);
