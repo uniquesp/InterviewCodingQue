@@ -1,1 +1,45 @@
-/bin/
+# Eclipse-specific files
+.project
+.classpath
+.settings/
+
+# Build directories
+bin/
+target/
+
+# Maven specific files
+.mvn/
+!**/src/main/**/mvn-wrapper.properties
+!**/src/main/**/mvn-wrapper.jar
+
+# Gradle specific files
+.gradle/
+build/
+
+# IntelliJ IDEA specific files (if sharing the project across IDEs)
+.idea/
+*.iml
+out/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+*.classpath
+*.project
+*.factorypath
+
+# Other ignored files
+*.war
+*.ear
+*.jar
+
+# Dependency directories
+lib/
